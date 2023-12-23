@@ -4,8 +4,8 @@ plugins {
   id("org.jetbrains.intellij") version "1.16.1"
 }
 
-group = "com.tonylabs"
-version = "1.0-SNAPSHOT"
+group = "com.com.tonylabs.forge.tonylabs"
+version = "1.0.0"
 
 repositories {
   mavenCentral()
