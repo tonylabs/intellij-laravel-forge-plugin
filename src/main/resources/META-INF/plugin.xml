@@ -27,7 +27,7 @@
     <!-- Extension points defined by the plugin.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow id="Token" anchor="right" factoryClass="com.tonylabs.forge.TokenWindowFactory"
+        <toolWindow id="Forge" anchor="right" factoryClass="com.tonylabs.forge.ToolWindowFactory"
                     canCloseContents="true" icon="/image/token_window_icon_dark.svg">
         </toolWindow>
     </extensions>

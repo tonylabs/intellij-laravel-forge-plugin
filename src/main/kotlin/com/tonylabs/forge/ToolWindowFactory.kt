@@ -8,8 +8,6 @@ import com.intellij.ui.content.ContentFactory
 import com.intellij.ui.components.JBLabel
 import com.intellij.ui.components.JBPanel
 
-import com.tonylabs.forge.ui.TokenWindowContent
-import com.tonylabs.forge.ui.ServerListContent
 import com.tonylabs.forge.model.Server
 
 import okhttp3.OkHttpClient
@@ -22,14 +20,14 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.google.gson.JsonParser
 
-class TokenWindowFactory : ToolWindowFactory {
+class ToolWindowFactory : ToolWindowFactory {
 
     private val httpClient = OkHttpClient()
     private val executorService = Executors.newSingleThreadExecutor()
 
     companion object {
         private const val TOKEN_KEY = "forgeToken"
-        private val preferences: Preferences = Preferences.userNodeForPackage(TokenWindowFactory::class.java)
+        private val preferences: Preferences = Preferences.userNodeForPackage(ToolWindowFactory::class.java)
     }
 
     init {
@@ -39,7 +37,6 @@ class TokenWindowFactory : ToolWindowFactory {
     override fun createToolWindowContent(project: Project, toolWindow: ToolWindow) {
         val contentFactory = ContentFactory.getInstance()
         val token = getTokenFromLocalStorage()
-
         val onTokenSubmit: (String) -> Unit = { submittedToken ->
             saveTokenToLocalStorage(submittedToken)
             fetchServers(submittedToken) { servers ->
@@ -51,7 +48,7 @@ class TokenWindowFactory : ToolWindowFactory {
         }
 
         if (token.isNullOrEmpty()) {
-            val tokenContent = contentFactory.createContent(TokenWindowContent(project, onTokenSubmit), "", false)
+            val tokenContent = contentFactory.createContent(ToolWindowContent(project, onTokenSubmit), "", false)
             toolWindow.contentManager.addContent(tokenContent)
         } else {
             // If token is available, fetch servers and show server list

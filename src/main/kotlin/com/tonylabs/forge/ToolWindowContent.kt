@@ -1,15 +1,14 @@
-package com.tonylabs.forge.ui
+package com.tonylabs.forge
 
 import com.intellij.openapi.project.Project
 
-import com.sun.java.accessibility.util.AWTEventMonitor.addActionListener
 import java.awt.BorderLayout
 import java.util.prefs.Preferences
 import javax.swing.*
 
-class TokenWindowContent(project: Project, private val onTokenSubmit: (String) -> Unit) : JPanel() {
+class ToolWindowContent(project: Project, private val onTokenSubmit: (String) -> Unit) : JPanel() {
     private val tokenTextArea: JTextArea
-    private val preferences: Preferences = Preferences.userNodeForPackage(TokenWindowContent::class.java)
+    private val preferences: Preferences = Preferences.userNodeForPackage(ToolWindowContent::class.java)
 
     companion object {
         private const val TOKEN_KEY = "forgeToken"

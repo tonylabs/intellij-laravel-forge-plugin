@@ -1,4 +1,4 @@
-package com.tonylabs.forge.ui
+package com.tonylabs.forge
 
 import com.intellij.openapi.project.Project
 import com.tonylabs.forge.model.Server
